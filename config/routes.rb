@@ -1,5 +1,8 @@
 Hackathon::Application.routes.draw do
 
+  get "users/new"
+  get "users/create"
+  get "users/destroy"
   get "user/new"
   get "user/create"
   get "user/destroy"
