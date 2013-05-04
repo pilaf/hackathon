@@ -35,14 +35,14 @@ ActiveRecord::Schema.define(version: 20130504230536) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "issue_labels", force: true do |t|
-    t.integer  "issue_id_id"
-    t.integer  "label_id_id"
+    t.integer  "issue_id"
+    t.integer  "label_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "issue_labels", ["issue_id_id"], name: "index_issue_labels_on_issue_id_id"
-  add_index "issue_labels", ["label_id_id"], name: "index_issue_labels_on_label_id_id"
+  add_index "issue_labels", ["issue_id"], name: "index_issue_labels_on_issue_id"
+  add_index "issue_labels", ["label_id"], name: "index_issue_labels_on_label_id"
 
   create_table "issues", force: true do |t|
     t.string   "title"
