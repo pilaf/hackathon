@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130504225530) do
+ActiveRecord::Schema.define(version: 20130504230536) do
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 20130504225530) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "issue_id"
   end
 
+  add_index "comments", ["issue_id"], name: "index_comments_on_issue_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "issue_labels", force: true do |t|
