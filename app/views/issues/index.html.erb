@@ -1,1 +1,7 @@
-<%= render @issues %>
+<%= content_for :title do %>
+  <title>Citissues | Issues %></title>
+<% end %>
+<h2>Issues</h2>
+<% @issues.each do |issue| %>
+  <%= link_to issue.title, issue %>
+<% end %>

@@ -15,11 +15,12 @@ class IssuesController < ApplicationController
   end
 
   def create
-    @issue = current_user.issues.new(issues_params)
+    @issue = current_user.reported_issues.new(issues_params)
     if @issue.save
       @issue.add_labels(params[:issue][:labels])
       render @issue
     else
+      @labels = Label.all
       render 'new'
     end
   end

@@ -13,11 +13,13 @@ class Issue < ActiveRecord::Base
   has_many :labels, through: :issue_labels
 
   # Validations
-  validates :title, :description, :latitude, :longitude, presence: true
-  validates :latitude, :longitude, numericality: true
+  validates :title, :description, presence: true
+  validates :latitude, numericality: true, if: :latitude
+  validates :longitude, numericality: true, if: :longitude
 
   # Methods
   def add_labels(label_ids)
+    return unless label_ids
     label_ids.each do |label_id|
       self.issue_labels.create(label_id: label_id)
     end
