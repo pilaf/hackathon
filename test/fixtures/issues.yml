@@ -3,17 +3,17 @@
 one:
   title: MyString
   description: MyText
-  creator_id: 
-  assignee_id: 
+  creator_id: 1
+  assignee_id: 1
   latitude: 1.5
   longitude: 1.5
-  city_id: 
+  city_id: 1
 
 two:
   title: MyString
   description: MyText
-  creator_id: 
-  assignee_id: 
+  creator_id: 1
+  assignee_id: 1
   latitude: 1.5
   longitude: 1.5
-  city_id: 
+  city_id: 1
