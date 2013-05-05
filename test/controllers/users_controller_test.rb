@@ -15,6 +15,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   def user_attributes
-    users(:one).attributes.except(:password_digest).merge(password: '123456', password_confirmation: '123456')
+    users(:one).attributes.except(:password_digest).merge(email: "a@heapsource.com", username: "guille",
+                                                          password: '123456', password_confirmation: '123456')
   end
 end
