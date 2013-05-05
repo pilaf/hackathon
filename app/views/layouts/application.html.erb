@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hackathon</title>
+  <%= yield :title %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -16,7 +16,7 @@
             <li><%= link_to "Sign up", signup_path %></li>
             <li><%= link_to "Sign in", login_path %></li>
           </ul>
-          <h3>Project name</h3>
+          <h3>Citissuer</h3>
         </div>
         <hr>
 	    <%= yield %>
