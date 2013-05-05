@@ -1,2 +1,31 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<%= form_for @user do |f| %>
+	<div class="field">
+		<%= f.text_field :username, class: "edit", placeholder: "Username" %>
+	</div>
+	<% unless @user.errors[:username].blank? %>
+		<span class="field-error"><%= @user.errors[:username].first %>.</span>
+	<% end %>
+	<div class="field">
+		<%= f.email_field :email, class: "edit", placeholder: "Email" %>
+	</div>
+	<% unless @user.errors[:email].blank? %>
+		<span class="field-error"><%= @user.errors[:email].first %>.</span>
+	<% end %>
+	<div class="field">
+		<%= f.password_field :password, class: "edit", placeholder: "Password" %>
+	</div>
+	<% unless @user.errors[:password].blank? %>
+		<span class="field-error"><%= @user.errors[:password].first %>.</span>
+	<% end %>
+	<div class="field">
+		<%= f.password_field :password_confirmation, class: "edit", placeholder: "Confirm password" %>
+	</div>
+	<% unless @user.errors[:password_confirmation].blank? %>
+		<span class="field-error"><%= @user.errors[:password_confirmation].first %>.</span>
+	<% end %>
+	<div class="clearfix"></div>
+	<div class="actions">
+		<%= f.submit "Sign up", class: "btn flat" %>
+		<%= link_to "Back to Home", :root, id:"back-to-plans-btn", class: "btn flat green" %>
+	</div>
+<% end %>
