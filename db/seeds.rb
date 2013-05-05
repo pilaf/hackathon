@@ -9,7 +9,10 @@ Label.create(name: 'garbage', color: 'green')
 Label.create(name: 'security', color: 'white')
 
 # Test users
-User.create(username: 'turizo', email: 't@gmail.com', password: '123456', collaborator: true)
-User.create(username: 'mancilla', email: 'm@gmail.com', password: '123456', collaborator: true)
-User.create(username: 'garcia', email: 'g@gmail.com', password: '123456', collaborator: true)
-User.create(username: 'iguaran', email: 'i@gmail.com', password: '123456', collaborator: true)
+User.create(username: 'turizo', email: 't@gmail.com', password: '123456')
+User.create(username: 'mancilla', email: 'm@gmail.com', password: '123456')
+User.create(username: 'garcia', email: 'g@gmail.com', password: '123456')
+User.create(username: 'iguaran', email: 'i@gmail.com', password: '123456')
+
+User.create(username: 'movilidad', email: 'm@gmail.com', password: '123456', collaborator: true)
+User.create(username: 'policia', email: 'p@gmail.com', password: '123456', collaborator: true)
