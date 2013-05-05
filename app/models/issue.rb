@@ -3,7 +3,7 @@ class Issue < ActiveRecord::Base
   belongs_to :assignee, class_name: "User"
   belongs_to :city
   has_many :comments
-  has_many :photos, as: :imageable
-  has_many :issue_labels
+  has_many :photos, as: :imageable, dependent: :delete_all
+  has_many :issue_labels, dependent: :delete_all
   has_many :labels, through: :issue_labels
 end
