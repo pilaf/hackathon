@@ -17,4 +17,9 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+
+  def redirect_if_logged_in
+    redirect_to :issues if logged_in?
+  end
+  helper_method :redirect_if_logged_in
 end
