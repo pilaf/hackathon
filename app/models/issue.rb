@@ -6,4 +6,7 @@ class Issue < ActiveRecord::Base
   has_many :photos, as: :imageable, dependent: :delete_all
   has_many :issue_labels, dependent: :delete_all
   has_many :labels, through: :issue_labels
+
+  #Validations
+  validates :title, :description, :latitude, :longitude, presence: true
 end
