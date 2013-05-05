@@ -1,9 +1,9 @@
 class IssuesController < ApplicationController
 
-  #TODO: Add before filters: require_logged_in
+  skip_before_filter :authorize, only:  [:index, :show]
 
   def index
-    @issues = Issue.all
+    @issues = Issues.scoped
   end
 
   #Read
@@ -12,14 +12,14 @@ class IssuesController < ApplicationController
   end
 
   def new
-    @issue = Issue.new
+    @issue = Issue.new(params[:issue])
     @labels = Label.all
   end
 
   def create
     @issue = current_user.issues.new(issues_params)
     if @issue.save
-      create_issue_labels(@issue)
+      @issue.add_labels(params[:issue][:labels]) unless params[:issue][:labels].empty?
       render @issue
     else
       render 'new'
@@ -27,16 +27,7 @@ class IssuesController < ApplicationController
   end
 
   private
-  def issues_parameters
+  def issues_params
     params.require(:issue).permit(:title, :description, :assignee_id, :latitude, :longitude)
-  end
-
-  def create_issue_labels(issue)
-    labels = params[:issue][:labels]
-    unless labels.empty?
-      labels.each do |label|
-        issue.issue_labels.create(label_id: label.id)
-      end
-    end
   end
 end
