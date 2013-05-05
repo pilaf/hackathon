@@ -1,19 +1,20 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  test "should get new" do
+  test "should get new page on #new" do
     get :new
     assert_response :success
   end
 
-  test "should get create" do
-    get :create
-    assert_response :success
+  test "should create new users on #create" do
+    assert_difference('User.count', 1) do
+      post :create, user: user_attributes
+    end
+
+    assert_redirected_to root_url
   end
 
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
+  def user_attributes
+    users(:one).attributes.except(:password_digest).merge(password: '123456', password_confirmation: '123456')
   end
-
 end

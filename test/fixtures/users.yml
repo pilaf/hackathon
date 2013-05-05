@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  username: MyString
-  email: MyString
-  password_digest: MyString
-  company: MyString
-  url: MyString
-  location: MyString
+  name: Guillermo Iguaran
+  username: guilleiguaran
+  email: guilleiguaran@gmail.com
+  password_digest:
+  company: HeapSource
+  url: http://rubyonrails.org
+  location: Barranquilla, Colombia
 
 two:
   name: MyString
