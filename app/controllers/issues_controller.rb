@@ -7,6 +7,7 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.find(params[:id])
+    @comments = @issue.comments
   end
 
   def new
@@ -21,6 +22,7 @@ class IssuesController < ApplicationController
       render @issue
     else
       @labels = Label.all
+      flash.now.alert = "Verify the info before of continue."
       render 'new'
     end
   end

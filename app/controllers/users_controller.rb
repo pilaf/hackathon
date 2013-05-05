@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url, notice: "Thank you for signing up!"
     else
+      flash.now.alert = "Please verify your info."
       render "new"
     end
   end
