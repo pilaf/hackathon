@@ -13,6 +13,7 @@ class IssuesController < ApplicationController
 
   def new
     @issue = Issue.new
+    @labels = Label.all
   end
 
   def create

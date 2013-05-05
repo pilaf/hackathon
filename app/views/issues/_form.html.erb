@@ -17,7 +17,7 @@
   <% unless @issue.errors[:assignee_id].blank? %>
     <span class="field-error"><%= @issue.errors[:asignee_id].first %>.</span>
   <% end %>
-  <% Label.all.each do |label| %>
+  <% @labels.each do |label| %>
     <%= check_box_tag 'issue[labels][]',  label.id, false %> 
     <%= label.name %>
   <% end %>
