@@ -2,7 +2,8 @@ Hackathon::Application.routes.draw do
 
   root to: 'site#index'
 
-  #Registration
+  # Registration
+  resources :users, except: :destroy
   get 'signup' => 'users#new', as: 'signup'
   
   #Authentication
@@ -10,6 +11,6 @@ Hackathon::Application.routes.draw do
   delete 'logout' => 'sessions#destroy', as: 'logout'
 
   #Restfull routes
-  resources :sessions, only: :create
+  resources :sessions, only: only: [:new, :create, :destroy]
   resources :issues, except: :destroy
 end

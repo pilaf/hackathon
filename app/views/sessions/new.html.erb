@@ -1,2 +1,27 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<div id="auth-content">
+	<h1>Login to your account</h1>
+	<h2>Please, enter your data</h2>
+	<%= form_tag sessions_path, class: "login" do %>
+		<% if flash[:error] %>
+			<span class="field-error login"><%= flash[:error] %></span>
+		<% end %>
+		<div class="field">
+			<%= text_field_tag :username, "", class: "edit", placeholder: "Username" %>
+		</div>
+		<div class="field">
+			<%= password_field_tag :password, "", class: "edit", placeholder: "Password" %>
+		</div>
+		<div class="clearfix"></div>
+		<div class="actions">
+			<%= submit_tag "Login", class: 'btn flat' %>
+			<%= link_to "Back to home", :root, class: "btn flat green" %>
+		</div>
+	<% end %>
+ 
+	<div class="extra-actions">
+		<%= link_to "Forgot password?", new_password_path, class: "btn flat cyan" %> 
+		<%= link_to "Sign up", :signup, class: "btn flat cyan" %>
+		<div class="or">or</div>
+		<div class="clearfix"></div>
+	</div>
+</div>

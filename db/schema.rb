@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20130505031804) do
+=======
+ActiveRecord::Schema.define(version: 20130505002106) do
+>>>>>>> master
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -54,6 +58,7 @@ ActiveRecord::Schema.define(version: 20130505031804) do
     t.integer  "city_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status",      default: 1
   end
 
   add_index "issues", ["assignee_id"], name: "index_issues_on_assignee_id"
