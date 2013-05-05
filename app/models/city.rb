@@ -1,7 +1,8 @@
 class City < ActiveRecord::Base
+  # Associations
   has_many :issues
 
-  #Validations
+  # Validations
   validates :name, :subdomain, :country, :latitude, :longitude, presence: true
   validates :latitude, :longitude, numericality: true
 end

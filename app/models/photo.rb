@@ -1,6 +1,7 @@
 class Photo < ActiveRecord::Base
+  # Associations
   belongs_to :imageable, :polymorphic => true
 
-  #Validations
+  # Validations
   validates :image, :imageable_type, presence: true
 end
