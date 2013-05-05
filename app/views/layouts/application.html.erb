@@ -4,6 +4,7 @@
   <%= yield :title %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "site" %>
   <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>
@@ -12,9 +13,9 @@
      <div class="container-narrow">
         <div class="masthead">
           <ul class="nav nav-pills pull-right">
-            <li class="active"><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Sign up", signup_path %></li>
-            <li><%= link_to "Sign in", login_path %></li>
+            <li id="home" class="active"><%= link_to "Home", root_path %></li>
+            <li id="signup"><%= link_to "Sign up", signup_path %></li>
+            <li id="signin"><%= link_to "Sign in", login_path %></li>
           </ul>
           <h3>Citissuer</h3>
         </div>
