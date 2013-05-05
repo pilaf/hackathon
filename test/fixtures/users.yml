@@ -4,7 +4,7 @@ one:
   name: Guillermo Iguaran
   username: guilleiguaran
   email: guilleiguaran@gmail.com
-  password_digest:
+  password_digest: <%= BCrypt::Password.create("123456", cost: 1) %>
   company: HeapSource
   url: http://rubyonrails.org
   location: Barranquilla, Colombia
