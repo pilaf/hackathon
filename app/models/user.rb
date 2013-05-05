@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   # Validations
   validates :name, :username, :email, presence: true
   validates :username, :email, uniqueness: true
-  validates :username, format: { with: /^[\w-]+$/ }
+  validates :username, format: { with: /\A[\w-]+\z/ }
   validates :email, format: { with: /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i }
 
   # Validations on create
