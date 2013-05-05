@@ -16,12 +16,28 @@ h1 {
     padding-bottom: 10px;
 }
 
+h2 {
+  .subtitle-mid(white);
+  margin-bottom: 8px;
+}
+
 h3 {
     .subtitle-mid(@gray-e);
 }
 
 p {
-    color: white;
+  .regular-sans(16px, normal, @gray-e);
+}
+
+a {
+  .regular-sans(16px, normal, white);
+  &:hover {
+    color: @red;
+  }
+}
+
+.edit, select {
+  margin-bottom: 8px !important;
 }
 
 /* Custom container */
