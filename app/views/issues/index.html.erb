@@ -1,7 +1,10 @@
 <%= content_for :title do %>
-  <title>Citissuer | Issues %></title>
+  <title>Citissuer | Issues</title>
 <% end %>
-<h2>Issues</h2>
+
+<h2>Issues of your city</h2>
+<div class="map">
+</div>
 <% @issues.each do |issue| %>
   <%= link_to issue.title, issue %>
 <% end %>

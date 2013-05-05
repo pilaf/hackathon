@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_filter :authorize, only: :destroy
+  before_filter :redirect_if_logged_in, except: :destroy
 
   def new
   end
