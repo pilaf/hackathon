@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_url, notice: "Thank you for signing up!"
+      redirect_to :issues, notice: "Thank you for signing up!"
     else
       flash.now.alert = "Please verify your info."
       render "new"
