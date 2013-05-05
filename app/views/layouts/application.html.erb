@@ -13,9 +13,14 @@
      <div class="container-narrow">
         <div class="masthead">
           <ul class="nav nav-pills pull-right">
-            <li id="home" class="active"><%= link_to "Home", root_path %></li>
-            <li id="signup"><%= link_to "Sign up", signup_path %></li>
-            <li id="signin"><%= link_to "Sign in", login_path %></li>
+            <% unless :logged_in %>
+              <li class="active"><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Sign up", signup_path %></li>
+              <li><%= link_to "Sign in", login_path %></li>
+            <% else %>
+              <li><%= link_to "New Issue", new_issue_path %></li>
+              <li><%= link_to "Logout", logout_path %></li>
+            <% end %>
           </ul>
           <h3>Citissuer</h3>
         </div>
