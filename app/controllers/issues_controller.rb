@@ -1,12 +1,10 @@
 class IssuesController < ApplicationController
-
-  skip_before_filter :authorize, only:  [:index, :show]
+  before_filter :authorize, only:  [:new, :create]
 
   def index
-    @issues = Issues.scoped
+    @issues = Issue.all
   end
 
-  #Read
   def show
     @issue = Issue.find(params[:id])
   end
@@ -19,7 +17,7 @@ class IssuesController < ApplicationController
   def create
     @issue = current_user.issues.new(issues_params)
     if @issue.save
-      @issue.add_labels(params[:issue][:labels]) unless params[:issue][:labels].empty?
+      @issue.add_labels(params[:issue][:labels])
       render @issue
     else
       render 'new'

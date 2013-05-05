@@ -1,12 +1,11 @@
 class SessionsController < ApplicationController
+  before_filter :authorize, only: :destroy
 
-  skip_before_filter :authorize, except:  :destroy
-  
   def new
   end
 
   def create
-    user = User.find_by_email_or_username(params[:email])
+    user = User.find_by_email_or_username(params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to root_url, notice: "Logged in!"
