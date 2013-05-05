@@ -9,4 +9,5 @@ class Issue < ActiveRecord::Base
 
   #Validations
   validates :title, :description, :latitude, :longitude, presence: true
+  validates :latitude, :longitude, numericality: true
 end
