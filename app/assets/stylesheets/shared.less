@@ -1,0 +1,260 @@
+//----------------
+//---- resets ----
+//----------------
+
+body * {
+	margin: 0;
+}
+
+
+
+//----------------
+//---- colors ----
+//----------------
+
+@blue: #24a4dd;
+@blue-alt: #4cbadf;
+@lblue: lighten(@blue, 10%);
+@dblue: #293843;
+
+@gray-fc: #fcfcfc;
+@gray-fa: #fafafa;
+@gray-f8: #f8f8f8;
+@gray-f4: #f4f4f4;
+@gray-e: #eeeeee;
+@gray-d: #dddddd;
+@gray-c: #cccccc;
+@gray-b: #bbbbbb;
+@gray-a: #a0a0a0;
+@gray-8: #888888;
+@gray-7: #707070;
+@gray-4: #444444;
+
+@red: #ed5124;
+@green: #4cc848;
+@orange: #f3a005;
+@cyan: #00a2c1;
+
+@full-text: #433f41;
+@half-text: #636468;
+@light-text: @gray-a;
+@alert-c: #d0d1d0;
+@outline: #c7d4e0; 
+
+
+
+//------------------------
+//---- utility mixins ----
+//------------------------
+
+.flip-vertical {
+	-moz-transform: scaleY(-1);
+	-webkit-transform: scaleY(-1);
+	-o-transform: scaleY(-1);
+	transform: scaleY(-1);
+	-ms-filter: flipv;
+	filter: flipv;
+}
+
+.absolute-expanded(@t: 0, @l: 0, @r: 0, @d: 0) {
+	top: @t;
+	left: @l;
+	right: @r;
+	bottom: @d;
+	position: absolute;
+}
+
+.gradient(@stop1: 0, @color1: #ccc, @stop2: 50%, @color2: #ddd, @stop3: 100%, @color3: #ccc){ 
+	background-color: @color2;
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(@stop1, @color1), color-stop(@stop2, @color2), color-stop(@stop3, @color3));
+	background: -moz-linear-gradient(center bottom, @color1 @stop1, @color2 @stop2, @color3 @stop3);
+	background: -ms-linear-gradient(center bottom, @color1 @stop1, @color2 @stop2, @color3 @stop3);
+	background: -o-linear-gradient(center bottom, @color1 @stop1, @color2 @stop2, @color3 @stop3);
+	background: linear-gradient(center bottom, @color1 @stop1, @color2 @stop2, @color3 @stop3); 
+	-pie-background: linear-gradient(@color1, @color2, @color3);
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=%d,endColorstr=%d)", @color1, @color3)); 
+}
+
+.h-gradient(@stop1: 0, @color1: #ccc, @stop2: 50%, @color2: #ddd, @stop3: 100%, @color3: #ccc) {
+	background-color: @color2;
+	background: -webkit-gradient(linear, left top, right top, color-stop(@stop1, @color1), color-stop(@stop2, @color2), color-stop(@stop3, @color3));
+	background: -moz-linear-gradient(left center, @color1 @stop1, @color2 @stop2, @color3 @stop3);
+	background: -ms-linear-gradient(left center, @color1 @stop1, @color2 @stop2, @color3 @stop3);
+	background: -o-linear-gradient(left center, @color1 @stop1, @color2 @stop2, @color3 @stop3);
+	background: linear-gradient(left center, @color1 @stop1, @color2 @stop2, @color3 @stop3); 
+	-pie-background: linear-gradient(@color1, @color2, @color3);
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=%d,endColorstr=%d)", @color1, @color3));
+}
+
+.box-shadow(@x: 0, @y: 0, @blur: 5px, @color: #cccccc) {
+	box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+	-webkit-box-shadow: @arguments;
+}
+
+.box-shadow-in(@x: 0, @y: 0, @blur: 5px, @color: #cccccc) {
+	box-shadow: @arguments inset;
+	-moz-box-shadow: @arguments inset;
+	-webkit-box-shadow: @arguments inset;
+}
+
+.box-shadow-inout(@x1: 0, @y1: 0, @blur1: 5px, @color1: #cccccc, @x2: 0, @y2: 0, @blur2: 5px, @color2: #cccccc) {
+	box-shadow: @x1 @y1 @blur1 @color1 inset, @x2 @y2 @blur2 @color2;
+	-moz-box-shadow: @x1 @y1 @blur1 @color1 inset, @x2 @y2 @blur2 @color2;
+	-webkit-box-shadow: @x1 @y1 @blur1 @color1 inset, @x2 @y2 @blur2 @color2;
+}
+
+.box-shadow-inin(@x1: 0, @y1: 0, @blur1: 5px, @color1: #cccccc, @x2: 0, @y2: 0, @blur2: 5px, @color2: #cccccc) {
+    box-shadow: @x1 @y1 @blur1 @color1 inset, @x2 @y2 @blur2 @color2 inset;
+    -moz-box-shadow: @x1 @y1 @blur1 @color1 inset, @x2 @y2 @blur2 @color2 inset;
+    -webkit-box-shadow: @x1 @y1 @blur1 @color1 inset, @x2 @y2 @blur2 @color2 inset;
+}
+
+.box-shadow(none) {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.box-img {
+	.box-shadow(0, 0, 3px, @gray-a);
+	background: @gray-e;
+	border: 3px solid white;
+}
+
+.rounded-corners(@radius: 5px) {
+	border-radius: @radius;
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+}
+
+.rounded-corners-important(@radius: 5px) {
+	border-radius: @radius !important;
+	-webkit-border-radius: @radius !important;
+	-moz-border-radius: @radius !important;
+}
+
+.transition(@time: 0.250s, @property: all) {
+	-webkit-transition: @property @time ease-in-out;
+	-moz-transition: @property @time ease-in-out;
+	transition: @property @time ease-in-out;
+}
+
+.hide {
+	display: none !important;
+}
+
+
+//---------------
+//---- fonts ----
+//---------------
+
+.base-font(@size, @weight: normal, @color: @full-text) {
+	font-size: @size;
+	font-weight: @weight;
+	color: @color;
+	line-height: @size * 1.25;
+}
+
+.lucida-sans(@size: 1em, @weight: normal, @color: @full-text) {
+	.base-font(@size, @weight, @color);
+	font-family: 'Lucida Sans', LatoLight, OpenSans, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url('fonts/OpenSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.open-sans(@size: 1em, @weight: normal, @color: @full-text) {
+	.base-font(@size, @weight, @color);
+	font-family: OpenSans, LatoRegular, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+    font-family: OpenSansLight;
+    src: url('fonts/OpenSans-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.open-sans-light(@size: 1em, @weight: normal, @color: @full-text) {
+	.base-font(@size, @weight, @color);
+	font-family: OpenSansLight, LatoRegular, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+    font-family: LatoLight;
+    src: url('fonts/Lato-Lig-webfont.ttf') format('truetype'),
+         url('fonts/Lato-Lig-webfont.svg#LatoLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.light-sans(@size: 1em, @weight: normal, @color: @full-text) {
+	.base-font(@size, @weight, @color);
+	font-family: LatoLight, Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+    font-family: LatoRegular;
+    src: url('fonts/Lato-Reg-webfont.ttf') format('truetype'),
+         url('fonts/Lato-Reg-webfont.svg#LatoLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.regular-sans(@size: 1em, @weight: normal, @color: @full-text) {
+	.base-font(@size, @weight, @color);
+	font-family: LatoRegular, Helvetica, Arial, sans-serif;
+}
+
+.subtitle-mid(@color: @full-text) {
+	.light-sans(32px, normal, @color);
+	padding: 16px 0 4px 0;
+	line-height: 32px;
+}
+
+.subtitle-big(@color: @full-text) {
+	.light-sans(49px, normal, @color);
+	padding: 16px 0 0 0;
+	line-height: 49px;
+}
+
+.center {
+	text-align: center;	
+}
+
+.btn {
+	.open-sans(13px, normal, @half-text);
+	.transition;
+	.rounded-corners(2px);    
+	.box-shadow-in(0, 1px, 2px, white);
+	.gradient(0, @gray-f4, 50%, @gray-f4, 100% , @gray-f8);
+	padding: 6px 10px;
+	line-height: 16px;
+	outline: none;
+	text-shadow: none !important;
+	text-decoration: none;
+	border: 1px solid @gray-b;
+	cursor: pointer;
+	vertical-align: middle;
+	&:hover, &.colored {
+		.box-shadow-in(0, 0, 0, white);
+		.gradient(0, @blue, 1%, @blue, 100%, @lblue);
+		color: white;
+		border: 1px solid lighten(@blue, 5%);
+		text-shadow: none !important;
+		[class^="icon-"], [class*=" icon-"] {
+			opacity: 1;
+			color: white;
+		}
+	}
+	&:active {
+		.transition(0);
+		.box-shadow-inout(0, 1px, 5px, @gray-a, 0, 1px, 2px, white);
+		text-shadow: none !important;
+	}
+}
