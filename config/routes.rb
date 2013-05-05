@@ -11,6 +11,6 @@ Hackathon::Application.routes.draw do
   delete 'logout' => 'sessions#destroy', as: 'logout'
 
   #Restfull routes
-  resources :sessions, only: only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
   resources :issues, except: :destroy
 end
