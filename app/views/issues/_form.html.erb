@@ -1,0 +1,28 @@
+<%= form_for @issue do |f| %>
+  <div class="field">
+    <%= f.text_field :title, class: "edit", placeholder: "title" %>
+  </div>
+  <% unless @issue.errors[:title].blank? %>
+    <span class="field-error"><%= @issue.errors[:title].first %>.</span>
+  <% end %>
+  <div class="field">
+    <%= f.text_area :description, class: "edit", placeholder: "description" %>
+  </div>
+  <% unless @issue.errors[:description].blank? %>
+    <span class="field-error"><%= @issue.errors[:description].first %>.</span>
+  <% end %>
+  <div class="field">
+    <%= f.select :assignee_id, options_for_select(collaborators_list), class: "edit", prompt: "- Select a responsable -" %>
+  </div>
+  <% unless @issue.errors[:assignee_id].blank? %>
+    <span class="field-error"><%= @issue.errors[:asignee_id].first %>.</span>
+  <% end %>
+  <% @labels.each do |label| %>
+    <%= check_box_tag 'issue[labels][]',  label.id, false %>
+    <%= label.name %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "Add Issue", class: "btn flat" %>
+    <%= link_to "Cancel", "#", class: "btn flat green" %>
+  </div>
+<% end %>
