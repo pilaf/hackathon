@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
 
   # Validations on update
   validates :password, confirmation: true, on: :update, if: :password
+
+  def self.find_by_email_or_username(email_or_username)
+    find_by_email(email_or_username) || find_by_username(email_or_username)
+  end
 end
